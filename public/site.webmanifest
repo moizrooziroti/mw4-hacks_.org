@@ -1,0 +1,23 @@
+{
+  "name": "MW4 Hacks",
+  "short_name": "MW4 Hacks",
+  "description": "Modern Warfare 4 hacks — guides, forums, and four affiliate product links on mw4-hacks.org.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0D0A14",
+  "theme_color": "#0D0A14",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

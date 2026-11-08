@@ -1,0 +1,51 @@
+---
+import '../styles/blog-pages.css';
+import Icon from './icons/Icon.astro';
+import { t } from '../i18n';
+import { ROUTES } from '../utils/path';
+import type { IconName } from './icons/types';
+import { Button } from '@/components/starwind/button';
+
+const b = t.blog;
+---
+
+<header class="articles-hero" aria-labelledby="articles-hero-title">
+  <div class="articles-hero__intro">
+    <p class="section-header__eyebrow">{b.heroEyebrow}</p>
+    <h1 id="articles-hero-title" class="articles-hero__title">
+      {b.heroTitle}
+      <span class="articles-hero__accent">{b.heroHighlight}</span>
+    </h1>
+    <p class="articles-hero__copy">{b.heroCopy}</p>
+  </div>
+
+  <ul class="articles-hero__hooks" aria-label="Popular MW4 hack topics">
+    {
+      b.hooks.map((item) => (
+        <li>
+          <a class="articles-hero__hook" href={item.href}>
+            <span class="articles-hero__hook-icon" aria-hidden="true">
+              <Icon name={item.icon as IconName} size={18} />
+            </span>
+            <span class="articles-hero__hook-text">
+              <span class="articles-hero__keyword">{item.keyword}</span>
+              <span class="articles-hero__hook-line">{item.hook}</span>
+            </span>
+            <Icon name="arrowRight" size={16} class="articles-hero__hook-arrow shrink-0" aria-hidden="true" />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="articles-hero__cta">
+    <Button as="a" href={ROUTES.products} variant="default" size="sm">
+      <Icon name="package" size={16} />
+      Compare four products
+    </Button>
+    <Button as="a" href={ROUTES.forums} variant="outline" size="sm">
+      <Icon name="messageCircle" size={16} />
+      Forum Q&amp;A
+    </Button>
+  </div>
+</header>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mw4-hacks.org/sitemap.xml
+
+# RSS: https://mw4-hacks.org/rss.xml

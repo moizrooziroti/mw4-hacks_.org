@@ -1,0 +1,65 @@
+---
+import SectionHeader from '../SectionHeader.astro';
+import { Button } from '@/components/starwind/button';
+import { Prose } from '@/components/starwind/prose';
+
+interface Block {
+  type: 'h2' | 'p';
+  text: string;
+}
+
+interface Props {
+  overviewTitle?: string;
+  blocks: Block[];
+  showToggle: boolean;
+}
+
+const { overviewTitle, blocks, showToggle } = Astro.props;
+
+function inlineHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/\[([^\]]+)\]\((\/[^)\s]+)\)/g, '<a href="$2">$1</a>');
+}
+---
+
+<section
+  class="border-t border-border bg-background py-12 md:py-16"
+  aria-labelledby="product-description-title"
+>
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeader
+      eyebrow="Overview"
+      title={overviewTitle ?? 'Product description'}
+      desc="How this Modern Warfare 4 offer fits, from the first read through checkout."
+      titleId="product-description-title"
+      wide
+    />
+
+    <div class:list={['desc-wrap product-detail__narrow mt-8', showToggle && 'collapsible']} data-desc-wrap>
+      <Prose class="description-content max-w-none">
+        {blocks.map((block) =>
+          block.type === 'h2' ? <h2>{block.text}</h2> : <p set:html={inlineHtml(block.text)} />,
+        )}
+      </Prose>
+      {
+        showToggle && (
+          <div class="mt-6 flex justify-start lg:justify-center">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              class="rounded-full"
+              data-desc-toggle
+              data-more="Show more"
+              data-less="Show less"
+            >
+              Show more
+            </Button>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
