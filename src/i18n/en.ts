@@ -35,8 +35,8 @@ export const en: Translations = {
   hero: {
     status: 'PC · Modern Warfare 4',
     eyebrow: 'MODERN WARFARE 4 HACKS · PC · 2026',
-    titleLine1: 'MODERN WARFARE 4 HACKS',
-    titleLine2: '',
+    titleLine1: 'MODERN WARFARE 4',
+    titleLine2: 'HACKS',
     subtitle:
       'MODERN WARFARE 4 HACKS on PC: MW4 ESP for enemy and streak intel, aimbot-style assist for smoother tracking, and wallhack-style outlines through cover — the core software hacks bundle. When you need something else, the same site lists an MW4 HWID spoofer, a skin changer for camos, and Cloud DMA for a hardware read path. Pick a product card, read the articles, then Buy opens affiliate checkout in a new tab. Third-party tools can violate game rules; account risk is on you.',
     ctaPrimary: 'See all hacks',

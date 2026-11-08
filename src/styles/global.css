@@ -37,11 +37,31 @@
   color: var(--primary);
 }
 
-/* Home hero H1 only — display face for MODERN WARFARE 4 HACKS */
+/* Home hero H1 only — display face for MODERN WARFARE 4 / HACKS */
 #hero .hero-title {
+  margin: 0;
   font-family: "Bebas Neue", var(--font-heading, ui-sans-serif, system-ui, sans-serif);
   font-weight: 400;
-  letter-spacing: 0.04em;
+  font-size: clamp(2.5rem, 8vw, 4.75rem);
+  line-height: 0.92;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+#hero .hero-title__line {
+  display: block;
+}
+
+#hero .hero-title__line--accent {
+  color: var(--primary);
+  letter-spacing: 0.08em;
+}
+
+@media (min-width: 1024px) {
+  #hero .hero-title {
+    font-size: clamp(3.25rem, 5.5vw, 5rem);
+    line-height: 0.9;
+  }
 }
 
 .section-header__title {

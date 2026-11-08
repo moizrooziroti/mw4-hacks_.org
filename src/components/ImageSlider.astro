@@ -32,7 +32,9 @@ const imageWidths = isHero ? HERO_IMAGE_WIDTHS : undefined;
 <div
   class:list={[
     'relative w-full',
-    'rounded-xl border border-border bg-card p-2 shadow-sm',
+    isHero
+      ? 'overflow-hidden rounded-xl border border-border bg-black/90 p-1.5 shadow-sm'
+      : 'rounded-xl border border-border bg-card p-2 shadow-sm',
     desktopOnly && 'hidden lg:block',
   ]}
   id={id}
@@ -40,7 +42,6 @@ const imageWidths = isHero ? HERO_IMAGE_WIDTHS : undefined;
 >
   <Carousel
     autoInit={!isHero}
-    data-hero-embla={isHero || undefined}
     opts={{ loop: images.length > 1, align: 'start' }}
     class="w-full"
   >

@@ -10,7 +10,7 @@ import { t } from '../i18n';
 import { resolvePageSeo } from '../config/seo';
 import { faqPageSchema, organizationSchema, websiteSchema } from '../utils/schema';
 import { getLandingFaqs } from '../data/faq';
-import { HERO_VIDEO_URL } from '../config/siteMedia';
+import { HERO_LCP_IMAGE } from '../config/siteMedia';
 
 const seo = resolvePageSeo('/');
 const homeFaqs = getLandingFaqs();
@@ -21,7 +21,15 @@ const homeFaqs = getLandingFaqs();
   description={seo.description}
   jsonLd={[websiteSchema(), organizationSchema(), faqPageSchema(homeFaqs.map((f, i) => ({ num: String(i + 1).padStart(2, '0'), q: f.q, a: f.a.replace(/<[^>]+>/g, '') })))]}
 >
-  <link slot="head" rel="preload" href={HERO_VIDEO_URL} as="video" type="video/mp4" fetchpriority="high" media="(min-width: 1024px)" />
+  <link
+    slot="head"
+    rel="preload"
+    href={HERO_LCP_IMAGE}
+    as="image"
+    type="image/webp"
+    fetchpriority="high"
+    media="(min-width: 1024px)"
+  />
   <HeroSection />
   <FeaturesSection />
   <ProductsSection />

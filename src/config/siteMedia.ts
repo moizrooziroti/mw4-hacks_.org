@@ -1,8 +1,47 @@
 /**
  * MW4 editorial stills (hosted). Product pages pull from pools via pageImages.ts — no duplicate on one page.
  */
-export const HERO_VIDEO_URL =
-  'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/seo-media-library/mw4/51ffc2cc-57ef-429b-83ff-03a57de958e9/1793979721766-g23p6g-anyway-i-tested-the-new-cod-mw4-cheat-client-is-it-worth-it-mlwkplvdalk-1058x595.webp';
+export const HERO_CAROUSEL_SLIDES = [
+  {
+    src: 'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/seo-media-library/mw4/c7f7b806-cb3e-4eea-8fa1-eca85c479073/1793619686582-bcf9kx-zadeyo-mw4-1-visuals.webp',
+    alt: 'Modern Warfare 4 hacks — ESP and overlay example (illustrative)',
+    caption: '',
+    captionDesc: '',
+  },
+  {
+    src: 'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/seo-media-library/mw4/c7f7b806-cb3e-4eea-8fa1-eca85c479073/1793619687776-hrl0j5-zadeyo-mw4-2-aimbot.webp',
+    alt: 'MW4 aim assistance overlay — illustrative capture',
+    caption: '',
+    captionDesc: '',
+  },
+  {
+    src: 'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/seo-media-library/mw4/c7f7b806-cb3e-4eea-8fa1-eca85c479073/1793619690119-o7nh8o-levo-mw4-1-visuals.webp',
+    alt: 'Modern Warfare 4 wallhack-style visuals — illustrative',
+    caption: '',
+    captionDesc: '',
+  },
+  {
+    src: 'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/seo-media-library/mw4/51ffc2cc-57ef-429b-83ff-03a57de958e9/1793979764096-03rlfk-anyway-i-tested-the-new-cod-mw4-cheat-client-is-it-worth-it-mlwkplvdalk-1058x595.webp',
+    alt: 'MW4 hacks client UI — example still',
+    caption: '',
+    captionDesc: '',
+  },
+  {
+    src: 'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/seo-media-library/mw4/51ffc2cc-57ef-429b-83ff-03a57de958e9/1793979755833-u56r6i-anyway-i-tested-the-new-cod-mw4-cheat-client-is-it-worth-it-mlwkplvdalk-1058x595.webp',
+    alt: 'Modern Warfare 4 multiplayer with overlay layers — illustrative',
+    caption: '',
+    captionDesc: '',
+  },
+  {
+    src: 'https://ooszazcwzmwhitdxwtom.supabase.co/storage/v1/object/public/seo-media-library/mw4/51ffc2cc-57ef-429b-83ff-03a57de958e9/1793979745509-gncrqn-anyway-i-tested-the-new-cod-mw4-cheat-client-is-it-worth-it-mlwkplvdalk-1058x595.webp',
+    alt: 'MW4 hacks menu and in-game layers — example capture',
+    caption: '',
+    captionDesc: '',
+  },
+] as const;
+
+/** First hero slide — preload on home for LCP */
+export const HERO_LCP_IMAGE = HERO_CAROUSEL_SLIDES[0]!.src;
 
 export const SITE_WEBP = {
   zadeyoMisc:
