@@ -15,6 +15,16 @@ export type BuyProduct = keyof typeof BUY_URLS;
 export const PRIMARY_BUY_URL = BUY_URLS.hacks;
 
 /** Map product slug → buy URL */
+/** Article slug → matching affiliate checkout (four products only). */
+export function buyUrlForArticleSlug(slug: string): string {
+  if (slug.includes('hwid-spoofer') || slug.includes('spoofer')) return BUY_URLS.spoofer;
+  if (slug.includes('skin-changer')) return BUY_URLS.skinChanger;
+  if (slug.includes('cloud-dma') || slug === 'software-cheats-vs-cloud-dma-tradeoffs') {
+    return BUY_URLS.cloudDma;
+  }
+  return BUY_URLS.hacks;
+}
+
 export function buyUrlForSlug(slug: string): string {
   switch (slug) {
     case 'modern-warfare-4-hacks':

@@ -7,10 +7,11 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/optimize-images.mjs && astro build && node scripts/prune-dist-images.mjs && node scripts/finalize-sitemap.mjs && node scripts/indexnow.mjs",
+    "build": "node scripts/optimize-images.mjs && astro build && node scripts/prune-dist-images.mjs && node scripts/finalize-sitemap.mjs && node scripts/indexnow.mjs && node scripts/qa-html.mjs",
     "preview": "astro preview --host 0.0.0.0",
     "start": "node scripts/serve.mjs",
-    "deploy": "npm run build && wrangler deploy",
+    "build:workers": "node scripts/build-workers.mjs",
+    "deploy": "node scripts/build-workers.mjs && wrangler deploy",
     "astro": "astro",
     "optimize:images": "node scripts/optimize-images.mjs"
   },

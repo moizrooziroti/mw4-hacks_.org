@@ -65,7 +65,10 @@ export function sitemapSerialize(item: SitemapItem): SitemapItem | undefined {
     path === '/privacy/' ||
     path === '/terms/' ||
     path === '/faq/' ||
-    path === '/affiliate-disclosure/'
+    path === '/affiliate-disclosure/' ||
+    path === '/blog/' ||
+    path === '/forum/' ||
+    path === '/contact/'
   ) {
     item.priority = 0.5;
     item.changefreq = 'yearly';

@@ -9,19 +9,19 @@ export interface ArticleSeoEntry {
 
 export const ARTICLE_SEO: Record<string, ArticleSeoEntry> = {
   'how-modern-warfare-4-hacks-work': {
-    keyword: 'Modern Warfare 4 Hacks Explained',
+    keyword: 'Modern Warfare 4 Hacks Explained | Full PC Buyer Guide 2026',
     description:
       'How Modern Warfare 4 hacks work: ESP, MW4 aimbot, wallhack loaders, and patches. Open our hacks product and buy on checkout.',
   },
   'mw4-esp-vs-aimbot-vs-wallhack': {
-    keyword: 'MW4 ESP vs Aimbot vs Wallhack',
+    keyword: 'MW4 ESP vs Aimbot vs Wallhack | Compare Feature Guide',
     description:
-      'MW4 ESP vs aimbot vs wallhack before you pay. Compare Modern Warfare 4 listings, then Buy on the MW4 hacks card.',
+      'MW4 ESP vs aimbot vs wallhack before you pay on Modern Warfare 4. Compare listings and toggles, then buy from the MW4 hacks card.',
   },
   'how-to-choose-mw4-cheats': {
-    keyword: 'Best MW4 Hacks to Buy 2026',
+    keyword: 'MW4 Buy Guide 2026 | How to Choose ESP, Aimbot, DMA',
     description:
-      'Choose Modern Warfare 4 hacks: software ESP and aimbot vs Cloud DMA. Pick one card on mw4-hacks.org and checkout.',
+      'Choose MW4 Modern Warfare 4 hacks: software ESP and aimbot vs Cloud DMA. Pick one card on mw4-hacks.org, then open partner checkout.',
   },
   'mw4-cheat-settings-explained': {
     keyword: 'MW4 Hack Settings Guide',
@@ -44,9 +44,9 @@ export const ARTICLE_SEO: Record<string, ArticleSeoEntry> = {
       'Cloud DMA for Modern Warfare 4: hardware path vs ESP loaders. Read tradeoffs, then open Cloud DMA checkout when it fits.',
   },
   'buying-mw4-hacks-checklist': {
-    keyword: 'Buy MW4 Hacks Checklist',
+    keyword: 'Hacks Checklist 2026 | Buy MW4 Safely on Partner Checkout',
     description:
-      'Buy MW4 hacks safely: price, key delivery, refunds, account risk. Start on /products/ and finish on partner checkout.',
+      'Buy MW4 hacks safely with this hacks checklist: price, key delivery, refund wording, and account risk. Start on /products/, finish on partner checkout.',
   },
   'mw4-esp-customization-tips': {
     keyword: 'MW4 ESP Setup & Customization',
@@ -54,9 +54,9 @@ export const ARTICLE_SEO: Record<string, ArticleSeoEntry> = {
       'MW4 ESP setup: colors and distance caps for cleaner Modern Warfare 4 overlays. Buy ESP features from the MW4 hacks listing.',
   },
   'mw4-aimbot-settings-and-overaim': {
-    keyword: 'MW4 Aimbot Settings 2026',
+    keyword: 'Aimbot Settings for MW4 2026 | FOV, Smoothing & Ping',
     description:
-      'MW4 aimbot settings for missed shots: FOV, smoothing, ping. Match the hacks listing vocabulary, then checkout.',
+      'Aimbot settings for missed shots on MW4: tighten FOV, smoothing, and ping habits before checkout. Match hacks listing vocabulary, then buy on partner site.',
   },
   'mw4-wallhack-config-readability': {
     keyword: 'MW4 Wallhack Settings',

@@ -55,8 +55,7 @@ const purchaseUrl = PRIMARY_BUY_URL;
             href={purchaseUrl}
             class="hidden lg:inline-flex"
             ariaLabel={t.ui.checkoutAria}
-            target="_blank"
-            rel="sponsored noopener noreferrer"
+            rel="sponsored"
           >
             {t.ui.browseCheats}
           </SlideRevealButton>
@@ -90,7 +89,7 @@ const purchaseUrl = PRIMARY_BUY_URL;
                 </a>
               ))}
             </nav>
-            <Button as="a" href={purchaseUrl} variant="primary" class="w-full justify-center" aria-label={t.ui.checkoutAria} target="_blank" rel="sponsored noopener noreferrer">
+            <Button as="a" href={purchaseUrl} variant="primary" class="w-full justify-center" aria-label={t.ui.checkoutAria} rel="sponsored">
               {t.ui.browseCheatsMobile}
             </Button>
             <div class="flex justify-center pt-1">

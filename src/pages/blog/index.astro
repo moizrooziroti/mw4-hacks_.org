@@ -1,0 +1,17 @@
+---
+import RouteAliasPage from '../../components/RouteAliasPage.astro';
+import { ROUTES } from '../../utils/path';
+import { resolvePageSeo } from '../../config/seo';
+
+const seo = resolvePageSeo('/blog/');
+---
+
+<RouteAliasPage
+  title={seo.title}
+  description={seo.description}
+  h1="MW4 hack guides and articles"
+  lead="The blog path is kept for old bookmarks. All Modern Warfare 4 hack guides, aimbot notes, ESP setup, and DMA articles are published on the articles hub."
+  targetHref={ROUTES.articles}
+  targetLabel="Open the articles hub"
+  breadcrumbLabel="Guides"
+/>

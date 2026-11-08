@@ -1,0 +1,17 @@
+---
+import RouteAliasPage from '../../components/RouteAliasPage.astro';
+import { ROUTES } from '../../utils/path';
+import { resolvePageSeo } from '../../config/seo';
+
+const seo = resolvePageSeo('/forum/');
+---
+
+<RouteAliasPage
+  title={seo.title}
+  description={seo.description}
+  h1="MW4 hacks community forum"
+  lead="This /forum/ shortcut points to the full forums index — threads on aimbot settings, ESP clutter, HWID spoofer, skin changer, and Cloud DMA for the four products we list."
+  targetHref={ROUTES.forums}
+  targetLabel="Browse MW4 forums"
+  breadcrumbLabel="Forum"
+/>

@@ -2,6 +2,8 @@
 
 Production is a **static Astro build** in `dist/`. Prefer **Cloudflare Workers (static assets)** — same pattern as your other domains.
 
+**Temporary live URL (until `mw4-hacks.org` is attached):** https://mw4-hacks-org.moizrooziroti.workers.dev/
+
 ## Custom domain (fixes HTTP 500 on apex)
 
 If `https://mw4-hacks.org/` returns **500** but `https://mw4-hacks-org.moizrooziroti.workers.dev/` works, the apex domain is still pointed at an old host (e.g. Railway). Fix:

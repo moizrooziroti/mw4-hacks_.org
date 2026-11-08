@@ -12,7 +12,7 @@ interface Props {
 const { product } = Astro.props;
 const plans = getProductPlans(product.slug);
 const defaultPlan = plans[0]!;
-const buyRel = 'sponsored noopener noreferrer';
+const buyRel = 'sponsored';
 ---
 
 <aside
@@ -42,7 +42,6 @@ const buyRel = 'sponsored noopener noreferrer';
       <Button
         as="a"
         href={product.buyUrl}
-        target="_blank"
         rel={buyRel}
         variant="primary"
         size="lg"

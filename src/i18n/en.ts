@@ -36,9 +36,9 @@ export const en: Translations = {
     status: 'PC · Modern Warfare 4',
     eyebrow: 'MODERN WARFARE 4 HACKS · PC · 2026',
     titleLine1: 'MODERN WARFARE 4',
-    titleLine2: 'HACKS',
+    titleLine2: 'HACKS SOFTWARE · 2026',
     subtitle:
-      'MODERN WARFARE 4 HACKS on PC: MW4 ESP for enemy and streak intel, aimbot-style assist for smoother tracking, and wallhack-style outlines through cover — the core software hacks bundle. When you need something else, the same site lists an MW4 HWID spoofer, a skin changer for camos, and Cloud DMA for a hardware read path. Pick a product card, read the articles, then Buy opens affiliate checkout in a new tab. Third-party tools can violate game rules; account risk is on you.',
+      'MODERN WARFARE 4 HACKS on PC: MW4 ESP for enemy and streak intel, aimbot-style assist for smoother tracking, and wallhack-style outlines through cover — the core software hacks bundle. When you need something else, the same site lists an MW4 HWID spoofer, a skin changer for camos, and Cloud DMA for a hardware read path. Pick a product card, read the articles, then Buy opens sponsored affiliate checkout in this tab. Third-party tools can violate game rules; account risk is on you.',
     ctaPrimary: 'See all hacks',
     ctaDiscord: 'Buy hacks now',
     modesLabel: 'Focus areas',
@@ -194,7 +194,7 @@ export const en: Translations = {
       {
         step: 'Step 3',
         title: 'Buy on checkout',
-        desc: 'Use Buy (sponsored, new tab). Save confirmation email and docs.',
+        desc: 'Use Buy (sponsored, same tab). Save confirmation email and docs.',
       },
     ],
   },
@@ -432,14 +432,14 @@ export const en: Translations = {
         icon: 'navBlog',
         title: 'Articles',
         desc: 'Long-form explainers — start with the featured article.',
-        linkLabel: 'Articles',
+        linkLabel: 'Browse setup guides',
         href: '/articles/',
       },
       {
         icon: 'messageCircle',
         title: 'Forums',
         desc: 'Search threads before asking in email.',
-        linkLabel: 'Forums',
+        linkLabel: 'Open community threads',
         href: '/forums/',
       },
     ],
@@ -516,6 +516,26 @@ export const en: Translations = {
             'Articles and forum threads are written for general education. They are not personalized advice and can change when the game or listings change.',
           ],
         },
+        {
+          heading: 'Price and availability',
+          paragraphs: [
+            'Commissions do not change the checkout price shown on the partner site. Listings, features, and refund rules can change without notice on mw4-hacks.org.',
+            'If a Buy link fails, use the product page path from the nav catalog and try again later — we do not host the cart.',
+          ],
+        },
+        {
+          heading: 'Questions about this affiliate disclosure',
+          paragraphs: [
+            'This page summarizes how sponsored links work on mw4-hacks.org. It is not tax or legal advice; ask your advisor if you need formal disclosures for your own site.',
+          ],
+        },
+        {
+          heading: 'Tracking and cookies on checkout',
+          paragraphs: [
+            'Partner checkout sites may set their own cookies or analytics when you leave mw4-hacks.org. We do not control those tools — read the vendor privacy policy on the page where you pay.',
+            'Bookmark the product URL on mw4-hacks.org if you need to return after a failed payment; we cannot recover carts from affiliate dashboards.',
+          ],
+        },
       ],
     },
     about: {
@@ -532,7 +552,26 @@ export const en: Translations = {
         {
           heading: 'How purchases work',
           paragraphs: [
-            'Buy buttons open a partner checkout in a new tab. We may receive a commission — see Affiliate Disclosure.',
+            'Buy buttons open partner checkout in the same browser tab. We may receive a commission — see Affiliate Disclosure.',
+          ],
+        },
+        {
+          heading: 'What we do not host',
+          paragraphs: [
+            'mw4-hacks.org does not run game servers, key databases, or card processing. If checkout fails, email us about the website; billing disputes stay with the partner.',
+          ],
+        },
+        {
+          heading: 'Other pages on this catalog',
+          paragraphs: [
+            'Read the [pre-checkout hacks checklist](/articles/buying-mw4-hacks-checklist/), [site support routing](/support/), [terms of use](/terms/), and [privacy policy](/privacy/) before you pay.',
+          ],
+        },
+        {
+          heading: 'Updates and accuracy',
+          paragraphs: [
+            'Product blurbs on mw4-hacks.org are edited notes, not live menus. When a Modern Warfare 4 patch ships, listings can change before we update an article — confirm features on checkout the day you buy.',
+            'Forum threads are opinions from readers; they are not endorsements of any build or detection claim.',
           ],
         },
       ],
@@ -551,6 +590,19 @@ export const en: Translations = {
           heading: 'Contact',
           paragraphs: [
             'If you email support, we retain messages only as long as needed to respond.',
+          ],
+        },
+        {
+          heading: 'What we do not collect',
+          paragraphs: [
+            'We do not ask for your game login, payment card number, or order details on mw4-hacks.org. Checkout happens on the partner site under that vendor’s privacy terms.',
+            'Support email is used only to reply about this website — product pages, guides, forums, or your privacy questions.',
+          ],
+        },
+        {
+          heading: 'Your choices',
+          paragraphs: [
+            'You can block or clear cookies in your browser, use a private window, or skip analytics-heavy networks when reading MW4 hack guides.',
           ],
         },
       ],

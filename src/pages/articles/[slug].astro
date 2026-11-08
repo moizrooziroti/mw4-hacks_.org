@@ -3,14 +3,14 @@ import '../../styles/blog-pages.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { t } from '../../i18n';
 import { getAllBlogSlugs, getBlogPost, getRelatedBlogPosts } from '../../data/blog';
-import { pageTitle, SITE_ORIGIN } from '../../config/seo';
+import { SITE_ORIGIN } from '../../config/seo';
 import { getArticleSeo } from '../../config/articleSeo';
 import {
   articleSchema,
   breadcrumbSchema,
   parseBlogDate,
 } from '../../utils/schema';
-import { PRIMARY_BUY_URL, resolveCheckoutHref } from '../../config/checkout';
+import { buyUrlForArticleSlug, resolveCheckoutHref } from '../../config/checkout';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ResponsiveImage from '../../components/ResponsiveImage.astro';
 import BlogSidebar from '../../components/BlogSidebar.astro';
@@ -67,10 +67,11 @@ function slugify(text: string): string {
 }
 const published = parseBlogDate(post.date);
 const articleSeo = getArticleSeo(post.slug, { title: post.title, desc: post.desc });
+const articleBuyUrl = buyUrlForArticleSlug(post.slug);
 ---
 
 <BaseLayout
-  title={pageTitle(articleSeo.title)}
+  title={articleSeo.title}
   description={articleSeo.description}
   ogType="article"
   ogImage={post.image}
@@ -203,9 +204,8 @@ const articleSeo = getArticleSeo(post.slug, { title: post.title, desc: post.desc
           <nav class="blog-article__actions" aria-label="Continue reading">
             <Button
               as="a"
-              href={PRIMARY_BUY_URL}
-              target="_blank"
-              rel="sponsored noopener noreferrer"
+              href={articleBuyUrl}
+              rel="sponsored"
               variant="primary"
               aria-label={t.ui.checkoutAria}
             >
@@ -213,7 +213,7 @@ const articleSeo = getArticleSeo(post.slug, { title: post.title, desc: post.desc
               <Icon name="arrowRight" size={17} />
             </Button>
             <Button as="a" href={ROUTES.products} variant="outline">
-              View products
+              Open MW4 product catalog
             </Button>
             <Button as="a" href={ROUTES.articles} variant="outline">
               More articles

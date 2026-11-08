@@ -1,0 +1,17 @@
+---
+import RouteAliasPage from '../../components/RouteAliasPage.astro';
+import { ROUTES } from '../../utils/path';
+import { resolvePageSeo } from '../../config/seo';
+
+const seo = resolvePageSeo('/contact/');
+---
+
+<RouteAliasPage
+  title={seo.title}
+  description={seo.description}
+  h1="Contact mw4-hacks.org support"
+  lead="We do not process orders here. Use support for help with this website — product pages, articles, forums — then open the partner checkout from the product card when you are ready to pay."
+  targetHref={ROUTES.support}
+  targetLabel="Open support"
+  breadcrumbLabel="Contact"
+/>

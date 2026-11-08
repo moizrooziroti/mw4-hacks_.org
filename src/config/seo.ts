@@ -3,7 +3,16 @@ import { SITE_DOMAIN as INDEXNOW_HOST_NAME } from './site';
 import { getPageSeoEntry } from './pageSeo';
 import { SITE_WEBP } from './siteMedia';
 
-export const SITE_ORIGIN = `https://${t.site.domain}`;
+const DEFAULT_PUBLIC_ORIGIN = `https://${t.site.domain}`;
+
+/** Same host as canonical / sitemap when PUBLIC_CANONICAL_ORIGIN matches the deploy target. */
+export function resolveCanonicalOrigin(): string {
+  const fromEnv = import.meta.env.PUBLIC_CANONICAL_ORIGIN as string | undefined;
+  if (fromEnv?.startsWith('http')) return fromEnv.replace(/\/$/, '');
+  return DEFAULT_PUBLIC_ORIGIN;
+}
+
+export const SITE_ORIGIN = resolveCanonicalOrigin();
 
 export const DEFAULT_OG_IMAGE = SITE_WEBP.zadeyoVisuals;
 

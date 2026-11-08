@@ -3,14 +3,16 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
+const DEFAULT_SITE = 'https://mw4-hacks.org';
+const site =
+  typeof process.env.PUBLIC_CANONICAL_ORIGIN === 'string' &&
+  process.env.PUBLIC_CANONICAL_ORIGIN.startsWith('http')
+    ? process.env.PUBLIC_CANONICAL_ORIGIN.replace(/\/$/, '')
+    : DEFAULT_SITE;
+
 export default defineConfig({
-  site: 'https://mw4-hacks.org',
+  site,
   trailingSlash: 'always',
-  redirects: {
-    '/blog/': '/articles/',
-    '/forum/': '/forums/',
-    '/contact/': '/support/',
-  },
   compressHTML: true,
   prefetch: {
     prefetchAll: false,
@@ -26,6 +28,9 @@ export default defineConfig({
     }),
   ],
   vite: {
+    define: {
+      'import.meta.env.PUBLIC_CANONICAL_ORIGIN': JSON.stringify(site),
+    },
     plugins: [tailwindcss()],
     build: {
       cssMinify: true,

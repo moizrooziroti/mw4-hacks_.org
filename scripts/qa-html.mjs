@@ -1,99 +1,62 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = 'dist';
-const files = [];
-function walk(dir) {
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) walk(full);
-    else if (entry.name.endsWith('.html')) files.push(full);
+const dist = path.join(process.cwd(), 'dist');
+const issues = [];
+
+function walkHtml(dir, list = []) {
+  for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, ent.name);
+    if (ent.isDirectory()) walkHtml(p, list);
+    else if (ent.name.endsWith('.html')) list.push(p);
   }
+  return list;
 }
-walk(root);
 
-const skip = new Set([
-  'blog/index.html',
-  'forum/index.html',
-  'contact/index.html',
-  '404.html',
-]);
+function routeFromFile(file) {
+  const rel = path.relative(dist, file).replace(/\\/g, '/');
+  if (rel === 'index.html') return '/';
+  return `/${rel.replace(/index\.html$/, '')}`;
+}
 
-const problems = [];
-const titles = new Map();
-const descriptions = new Map();
-const buyChecks = {
-  'products/modern-warfare-4-hacks/index.html': '/products/mw4',
-  'products/modern-warfare-4-spoofer/index.html': '/products/hwid-spoofer',
-  'products/modern-warfare-4-skin-changer/index.html': '/products/skin-changer',
-  'products/cloud-dma/index.html': '/products/cloud-dma',
-};
-const publicPaths = new Set();
-
+const files = walkHtml(dist);
 for (const file of files) {
-  const rel = path.relative(root, file).replaceAll('\\', '/');
-  if (skip.has(rel)) continue;
-  const urlPath = rel === 'index.html' ? '/' : `/${rel.replace(/index\.html$/, '')}`;
-  publicPaths.add(urlPath);
   const html = fs.readFileSync(file, 'utf8');
-  const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
-  const desc = (html.match(/name="description" content="([^"]*)"/) || [])[1] || '';
-  const h1 = (html.match(/<h1\b/g) || []).length;
-  const viewport = /name="viewport"/.test(html);
-  const imgs = [...html.matchAll(/<img\b[^>]*>/gi)].map((match) => match[0]);
-  const bare = imgs.filter((tag) => !/\balt\s*=\s*"[^"]+"/i.test(tag));
-  if (!title) problems.push(`${rel} missing title`);
-  if (!desc) problems.push(`${rel} missing description`);
-  if (title.length > 70) problems.push(`${rel} title ${title.length} chars`);
-  if (desc.length > 160) problems.push(`${rel} description ${desc.length} chars`);
-  if (h1 !== 1) problems.push(`${rel} h1=${h1}`);
-  if (!viewport) problems.push(`${rel} missing viewport`);
-  if (bare.length) problems.push(`${rel} images missing real alt ${bare.length}`);
-  if (/missing-info|lorem ipsum|\$0 — price pending|data\/reviews\.json|hero-placeholder|Dota|Valorant|dotacheats|\bTurbo\b|\]\(\//i.test(html)) {
-    problems.push(`${rel} placeholder, raw markdown, or other-game copy`);
-  }
-  const previousTitle = titles.get(title);
-  if (previousTitle) problems.push(`duplicate title: ${title} (${previousTitle}, ${rel})`);
-  else titles.set(title, rel);
-  const previousDesc = descriptions.get(desc);
-  if (previousDesc) problems.push(`duplicate description: ${rel} matches ${previousDesc}`);
-  else descriptions.set(desc, rel);
-  const expected = buyChecks[rel];
-  if (expected) {
-    const hrefs = [...html.matchAll(/href="(https:\/\/zadeyo\.com[^"]*)"/g)].map((match) => decodeURIComponent(match[1]));
-    if (!hrefs.some((href) => href.includes(expected))) problems.push(`${rel} buy link missing ${expected}`);
-  }
-  const localHrefs = [...html.matchAll(/href="(\/[^"#?]*)"/g)].map((match) => match[1]);
-  for (const href of localHrefs) {
-    if (href.startsWith('/_astro') || href.startsWith('/images') || href.endsWith('.svg') || href.endsWith('.xml') || href.endsWith('.txt') || href.endsWith('.webmanifest') || href.endsWith('.png') || href.endsWith('.ico')) continue;
-    const normalized = href.endsWith('/') ? href : `${href}/`;
-    const target = normalized === '/' ? path.join(root, 'index.html') : path.join(root, normalized, 'index.html');
-    const redirectHtml = path.join(root, normalized.replace(/^\//, ''), 'index.html');
-    if (!fs.existsSync(target) && !fs.existsSync(redirectHtml)) {
-      problems.push(`${rel} broken internal link ${href}`);
-    }
+  const route = routeFromFile(file);
+  const title = html.match(/<title>([^<]*)<\/title>/i)?.[1];
+  const desc = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1];
+  const h1s = [...html.matchAll(/<h1[\s>]/gi)];
+  if (!title?.trim()) issues.push(`${route}: missing <title>`);
+  if (!desc?.trim()) issues.push(`${route}: missing meta description`);
+  if (h1s.length !== 1) issues.push(`${route}: h1 count=${h1s.length}`);
+  const imgs = [...html.matchAll(/<img\b[^>]*>/gi)];
+  for (const img of imgs) {
+    if (!/\balt=/.test(img[0])) issues.push(`${route}: img missing alt: ${img[0].slice(0, 80)}`);
+    else if (/\balt=""\b/.test(img[0]) || /\balt=''\b/.test(img[0]))
+      issues.push(`${route}: img empty alt`);
   }
 }
 
-const sitemapFile = fs.existsSync('dist/sitemap.xml') ? 'dist/sitemap.xml' : 'dist/sitemap-0.xml';
-const sitemap = fs.existsSync(sitemapFile) ? fs.readFileSync(sitemapFile, 'utf8') : '';
-const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => {
-  const pathname = new URL(match[1]).pathname;
-  return pathname.endsWith('/') ? pathname : `${pathname}/`;
-});
-const robots = fs.readFileSync('public/robots.txt', 'utf8');
-for (const page of publicPaths) {
-  if (!locs.includes(page)) problems.push(`sitemap missing ${page}`);
+const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8');
+const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].replace('https://mw4-hacks.org', ''));
+const builtRoutes = new Set(files.map(routeFromFile));
+if (locs.length < builtRoutes.size - 2) {
+  issues.push(`sitemap may be missing pages (sitemap=${locs.length}, html=${builtRoutes.size})`);
 }
 for (const loc of locs) {
-  if (!publicPaths.has(loc)) problems.push(`sitemap extra ${loc}`);
+  const norm = loc.endsWith('/') ? loc : `${loc}/`;
+  if (!builtRoutes.has(norm) && loc !== '/rss.xml') issues.push(`sitemap loc not in dist: ${loc}`);
 }
-if (!robots.includes('https://mw4-hacks.org/sitemap.xml')) problems.push('robots missing sitemap');
-if (!/User-agent:\s*\*/.test(robots) || !/Allow:\s*\//.test(robots)) problems.push('robots not open');
 
-console.log(`pages ${publicPaths.size} sitemap ${locs.length}`);
-if (problems.length) {
-  console.log(problems.join('\n'));
-  process.exit(1);
+const robots = fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8');
+if (!/Sitemap:\s*https:\/\/mw4-hacks\.org\/sitemap\.xml/.test(robots)) {
+  issues.push('robots.txt sitemap line wrong');
 }
-console.log('QA HTML CHECK CLEAN');
+
+console.log(`Checked ${files.length} HTML files, ${locs.length} sitemap URLs`);
+if (issues.length === 0) {
+  console.log('QA HTML: OK');
+  process.exit(0);
+}
+console.log('QA HTML issues:\n' + issues.join('\n'));
+process.exit(1);

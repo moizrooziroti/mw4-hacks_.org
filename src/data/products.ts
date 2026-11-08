@@ -115,7 +115,7 @@ const acquisitionDefault = (productLabel: string): ProductAcquisition => ({
     {
       num: '02',
       title: 'Complete purchase',
-      desc: 'Use the Buy button on this page. It opens the official checkout in a new tab.',
+      desc: 'Use the Buy button on this page. It opens the official checkout in this tab.',
     },
     {
       num: '03',

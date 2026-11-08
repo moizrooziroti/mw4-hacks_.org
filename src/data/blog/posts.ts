@@ -31,7 +31,7 @@ function fig(src: string, alt: string, caption?: string) {
 export const blogPosts: BlogPostFull[] = [
   {
     tag: 'Guides',
-    title: 'Modern Warfare 4 Hacks Explained: ESP, Aimbot, and Wallhack (2026)',
+    title: 'Modern Warfare 4 hacks explained: full PC buyer guide (2026)',
     slug: 'how-modern-warfare-4-hacks-work',
     image: SITE_WEBP.levoAimbot,
     desc: 'What people mean by Modern Warfare 4 hacks in 2026: loaders, ESP, aimbot-style assist, wallhack-style visuals, and why listings change after patches.',
@@ -89,7 +89,7 @@ export const blogPosts: BlogPostFull[] = [
   },
   {
     tag: 'Guides',
-    title: 'MW4 ESP vs Aimbot vs Wallhack: What Each Feature Does',
+    title: 'MW4 ESP vs aimbot vs wallhack guide: compare features',
     slug: 'mw4-esp-vs-aimbot-vs-wallhack',
     image: SITE_WEBP.zadeyoMisc,
     desc: 'A plain split of Modern Warfare 4 ESP, aimbot, and wallhack so a product page is easier to read before checkout.',
@@ -122,7 +122,7 @@ export const blogPosts: BlogPostFull[] = [
   },
   {
     tag: 'Guides',
-    title: 'How to Choose MW4 Hacks in 2026 (ESP, Aimbot, or DMA)',
+    title: 'Best MW4 Buy Guide: Choose Hacks in 2026 (ESP, Aimbot, or DMA)',
     slug: 'how-to-choose-mw4-cheats',
     image: SITE_WEBP.levoMisc,
     desc: 'Pick a Modern Warfare 4 hack by role and hardware: software ESP and aimbot versus Cloud DMA, without hype counters.',
@@ -262,7 +262,7 @@ export const blogPosts: BlogPostFull[] = [
   },
   {
     tag: 'Guides',
-    title: 'Buying Modern Warfare 4 Hacks: Checklist Before You Pay',
+    title: 'Hacks checklist 2026: buy MW4 safely on partner checkout',
     slug: 'buying-mw4-hacks-checklist',
     image: EXTRA_WEBP.r5,
     desc: 'A short checklist for buying MW4 hacks: included features, update policy, checkout domain, and account risk.',
@@ -284,7 +284,14 @@ export const blogPosts: BlogPostFull[] = [
       ]),
       h2('Risk'),
       p(
-        'Modern Warfare 4 can restrict accounts that use third-party tools. Budget that before you buy. Start from the [product hub](/products/) and open one listing at a time.',
+        'Modern Warfare 4 can restrict accounts that use third-party tools. Budget that before you buy. Start from the [four-card product hub](/products/) and open one listing at a time.',
+      ),
+      h2('After delivery'),
+      p(
+        'Save the installer path, the license email, and a screenshot of the refund paragraph the day you pay. If a patch breaks the build, you will know which version you purchased without guessing from a forum thread.',
+      ),
+      p(
+        'Compare vendor language with [how MW4 loaders work](/articles/how-modern-warfare-4-hacks-work/) and [software vs Cloud DMA tradeoffs](/articles/software-cheats-vs-cloud-dma-tradeoffs/) so you are not buying the wrong card.',
       ),
       cta('Products', 'MW4 hacks, spoofer, skin changer, and Cloud DMA.', '/products/'),
     ],
@@ -316,7 +323,7 @@ export const blogPosts: BlogPostFull[] = [
   },
   {
     tag: 'Setup',
-    title: 'MW4 Aimbot Settings: Why Shots Still Miss',
+    title: 'MW4 aimbot settings 2026: FOV, smoothing, ping & missed shots',
     slug: 'mw4-aimbot-settings-and-overaim',
     image: EXTRA_WEBP.r3,
     desc: 'Modern Warfare 4 aimbot settings and missed shots: ping, crosshair height, FOV, and smoothing — not a magic slider.',
@@ -335,6 +342,13 @@ export const blogPosts: BlogPostFull[] = [
       h2('Crosshair height'),
       p(
         'If you hold the floor, the aimbot spends the fight correcting you. Head-level habits matter even with aim assistance on. Settings names are in [FOV and smoothing](/articles/mw4-cheat-settings-explained/).',
+      ),
+      h2('When to lower FOV first'),
+      p(
+        'If the crosshair snaps past the target and comes back, shrink FOV before you crank smoothing. Test on a private match at your normal MW4 sensitivity so the aimbot settings match muscle memory.',
+      ),
+      p(
+        'Heavy packet loss makes every profile feel late. Fix routing or wait for a stable session before you rewrite the whole menu — otherwise you chase noise.',
       ),
       cta('Aim features on the listing', 'Exact toggles are on checkout.', BUY_URLS.hacks),
     ],
@@ -357,7 +371,7 @@ export const blogPosts: BlogPostFull[] = [
       p(
         'A flat outline does not tell you which floor someone is on. Check that your color or thickness still separates up from down on maps you queue.',
       ),
-      cta('Hacks product', 'Wallhack options follow the seller’s menu.', BUY_URLS.hacks),
+      cta('Open MW4 wallhack listing', 'Wallhack options follow the seller’s menu.', BUY_URLS.hacks),
     ],
   },
   {
@@ -410,7 +424,7 @@ export const blogPosts: BlogPostFull[] = [
         'Loader version from the menu.',
         'One sentence on what you expected versus what happened.',
       ]),
-      cta('Hacks product', 'Compatibility notes are on the listing.', BUY_URLS.hacks),
+      cta('See hacks compatibility page', 'Compatibility notes are on the listing.', BUY_URLS.hacks),
     ],
   },
   {
